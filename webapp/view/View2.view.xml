@@ -1,0 +1,216 @@
+<mvc:View
+    xmlns:c="sap.ui.core"
+    controllerName="empsmartfilter.empodatasmartfilterproject.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    height="100%"
+>
+    <Page
+        id="page"
+        title="Employee Records"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                tooltip="Next Page"
+                press="onnavNext"
+            />
+        </headerContent>
+        <f:DynamicPage
+            id="dynamicPageId"
+            preserveHeaderStateOnScroll="true"
+            headerExpanded="{/headerExpanded}"
+            showFooter="true"
+            fitContent="true"
+        >
+            <!-- DynamicPage Title -->
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Title text="Employee Data" />
+                    </f:heading>
+                    <!-- <f:expandedContent>
+                        <Label text="This is a subheading of employee" />
+                    </f:expandedContent>
+                    <f:snappedContent>
+                        <Label text="This is a subheading of employee" />
+                    </f:snappedContent>
+                    <f:snappedTitleOnMobile>
+                        <Title text="This is a subheading of employee" />
+                    </f:snappedTitleOnMobile> -->
+
+                    <f:actions>
+                        <ToolbarSpacer />
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+
+            <!-- DynamicPage Header -->
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                    <smartFilterBar:SmartFilterBar
+                        id="smartFilterBar"
+                        entitySet="zemp_detailsSet"
+                        basicSearchFieldName="EmpId"
+                        enableBasicSearch="true"
+                    >
+                        <!-- <smartFilterBar:controlConfiguration>
+
+					<smartFilterBar:ControlConfiguration id = "idEmp" visibleInAdvancedArea="true" label = "Employee ID" key = "EmpId">
+               <smartFilterBar:defaultFilterValues> -->
+                        <!-- <smartFilterBar:SelectOption low = "1" /> -->
+                        <!-- </smartFilterBar:defaultFilterValues>
+               </smartFilterBar:ControlConfiguration>
+                    <smartFilterBar:ControlConfiguration id = "idEmpName" visibleInAdvancedArea="true" label = " Employee Name " key = "EmpName"/>
+                    <smartFilterBar:ControlConfiguration id = "idEmpMob" visibleInAdvancedArea="true" label = "Employee Phone " key = "EmpPhone"/>
+					
+				</smartFilterBar:controlConfiguration>				 -->
+                    </smartFilterBar:SmartFilterBar>
+                </f:DynamicPageHeader>
+            </f:header>
+
+            <f:content>
+                <t:Table
+                    rows="{Data1>/results}"
+                    selectionMode="MultiToggle"
+                    visibleRowCountMode="Auto"
+                    id="table1"
+                >
+                    <t:extension>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Employee Records" />
+                            <ToolbarSpacer />
+                            <Button
+                                text="DeleteAll"
+                                icon="sap-icon://clear-all"
+                                press="onRemoveAll"
+                            />
+                            <Button
+                                icon="sap-icon://excel-attachment"
+                                press="onExport"
+                            />
+                        </OverflowToolbar>
+                    </t:extension>
+                    <t:columns>
+                        <t:Column width="11rem">
+                            <Label text="Employee ID" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>EmpId}"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Employee Name" />
+                            <t:template>
+                                <Input value="{Data1>EmpName}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column
+                            width="6rem"
+                            hAlign="End"
+                        >
+                            <Label text="Employee Phone" />
+                            <t:template>
+                                <Label text="{Data1>EmpPhone}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Employee Email" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>EmpEmail}"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Employee Department" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>EmpDep}"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Basic Pay" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>BasicPay}"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="HRA" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>Hra}"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Special Allowance" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>SplAllowance}"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Shift Allowance" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>ShiftAllowance}"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Monthly Pay" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>MonthlyPay}"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </f:content>
+            <!-- DynamicPage Footer -->
+            <f:footer>
+                <OverflowToolbar>
+                    <Button
+                        icon="sap-icon://message-popup"
+                        text="{/messagesLength}"
+                        type="Emphasized"
+                        press="onMessageButtonPress"
+                        visible="{= !!${/messagesLength}}"
+                    />
+                    <ToolbarSpacer />
+                    <!-- <Button type="Accept" text="Accept"/>
+					<Button type="Reject" text="Reject"/> -->
+                    <Button
+                        type="Emphasized"
+                        text="GotoNextView"
+                        press="onnavNext"
+                    />
+                </OverflowToolbar>
+            </f:footer>
+        </f:DynamicPage>
+    </Page>
+</mvc:View>

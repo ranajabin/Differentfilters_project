@@ -1,0 +1,481 @@
+<mvc:View
+    xmlns:c="sap.ui.core"
+    controllerName="empsmartfilter.empodatasmartfilterproject.controller.View5"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    height="100%"
+>
+    <Page
+        id="page"
+        title="Employee Records"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <!-- <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                tooltip="Next Page"
+                press="onnavNext"
+            />
+        </headerContent> -->
+
+        <f:DynamicPage
+            id="dynamicPageId"
+            preserveHeaderStateOnScroll="true"
+            headerExpanded="{/headerExpanded}"
+            showFooter="false"
+            fitContent="true"
+        >
+            <!-- DynamicPage Title -->
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Title text="Employee Data" />
+                    </f:heading>
+
+                    <!-- <f:actions>
+                        <ToolbarSpacer />
+                    </f:actions> -->
+                </f:DynamicPageTitle>
+            </f:title>
+
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                    <VBox
+                        alignContent="End"
+                        alignItems="End"
+                    >
+                        <HBox>
+                            <!-- <Button text = "Go"  type = "Emphasized" visible = "false"  id = "_idbtn1" press = "onPressGo" /> -->
+                            <Button
+                                text="Filter"
+                                icon="sap-icon://filter"
+                                press="onPressFilter"
+                                type="Emphasized"
+                            />
+                            <SearchField
+                                width="100%"
+                                search="onFilterSearch"
+                            />
+                        </HBox>
+                    </VBox>
+
+                    <layout:HorizontalLayout class="sapUiContentPadding">
+                        <VBox>
+                            <Label
+                                text="Employee ID:"
+                                id="_idEmpId"
+                            />
+
+                            <MultiInput
+                                width="130px"
+                                placeholder="Enter ID"
+                                showClearIcon="true"
+                                id="_empid"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'EmpId' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>EmpId}"
+                                    text="{Data1>EmpId}"
+                                />
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee Name:"
+                                id="_idEmpNam"
+                            />
+
+                            <MultiInput
+                                width="130px"
+                                placeholder="Enter Name"
+                                showClearIcon="true"
+                                id="_empname"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'EmpName' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>EmpName}"
+                                    text="{Data1>EmpName}"
+                                />
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee Mob:"
+                                id="_idEmpMob"
+                            />
+                            <!-- <Input id="_IdContact" width="10%" showSuggestion="true" showValueHelp="true" textFormatMode="KeyValue" valueHelpRequest="onLoadDialog" /> -->
+                            <MultiInput
+                                width="130px"
+                                placeholder="Mob No."
+                                showClearIcon="true"
+                                id="_empPhone"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'EmpPhone' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>EmpPhone}"
+                                    text="{Data1>EmpPhone}"
+                                />
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee Email:"
+                                id="_idEmpMail"
+                            />
+
+                            <MultiInput
+                                width="130px"
+                                placeholder="Enter Email"
+                                showClearIcon="true"
+                                id="_empEmail"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'EmpEmail' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>EmpEmail}"
+                                    text="{Data1>EmpEmail}"
+                                />
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee Dept:"
+                                id="_idEmpDep"
+                            />
+
+                            <MultiInput
+                                width="130px"
+                                placeholder="Enter Dept"
+                                showClearIcon="true"
+                                id="_empDept"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'EmpDep' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>EmpDep}"
+                                    text="{Data1>EmpDep}"
+                                />
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee B Pay:"
+                                id="_idBPay"
+                            />
+
+                            <MultiInput
+                                width="130px"
+                                placeholder="Basic Pay"
+                                showClearIcon="true"
+                                id="_empBPay"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'BasicPay' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>BasicPay}"
+                                    text="{Data1>BasicPay}"
+                                />
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="HRA:"
+                                id="_idHra"
+                            />
+
+                            <MultiInput
+                                width="130px"
+                                placeholder="HRA"
+                                showClearIcon="true"
+                                id="_empHra"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'Hra' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>Hra}"
+                                    text="{Data1>Hra}"
+                                />
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Special Allowance:"
+                                id="_idSpclA"
+                            />
+
+                            <MultiInput
+                                width="130px"
+                                placeholder="Special A"
+                                showClearIcon="true"
+                                id="_empSpclA"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'SplAllowance' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>SplAllowance}"
+                                    text="{Data1>SplAllowance}"
+                                />
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Shift Allowance:"
+                                id="_idShftA"
+                            />
+
+                            <MultiInput
+                                width="130px"
+                                placeholder="Shift A"
+                                showClearIcon="true"
+                                id="_empShftA"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'ShiftAllowance' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>ShiftAllowance}"
+                                    text="{Data1>ShiftAllowance}"
+                                />
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Monthly Pay:"
+                                id="_idMPay"
+                            />
+
+                            <MultiInput
+                                width="130px"
+                                placeholder="Monthly Pay"
+                                showClearIcon="true"
+                                id="_empMPay"
+                                suggestionItems="{
+				path: 'Data1>/results',
+				sorter: { path: 'MonthlyPay' }
+			}"
+                                showValueHelp="true"
+                                valueHelpRequest="onLoadDialog"
+                                valueHelpTrigger="handleValueHelpTrigger"
+                            >
+                                <c:Item
+                                    key="{/results>MonthlyPay}"
+                                    text="{Data1>MonthlyPay}"
+                                />
+                            </MultiInput>
+                        </VBox>
+                    </layout:HorizontalLayout>
+                </f:DynamicPageHeader>
+            </f:header>
+
+            <f:content>
+                <Table
+                    backgroundDesign="Translucent"
+                    headerText="Employee Table:"
+                    alternateRowColors="true"
+                    id="Table1"
+                    items="{
+			path: 'Data1>/results',
+			sorter: {
+				path: 'Name'
+			}
+		}"
+                    width="100%"
+                    visible="true"
+                    inset="true"
+                    contextualWidth="inherit"
+                >
+                    <!-- <headerToolbar>
+                        <Toolbar height="60px">
+                            <Title text="Filter record:" />
+                            <ToolbarSpacer /> -->
+                    <!-- <SearchField width="15%" placeholder="TerritoryID" search="onFilterSearchTID" />
+                            <SearchField width="15%" placeholder= "TDesc" search="onFilterSearchTDesc" />
+                            <SearchField width="15%" placeholder= "RegionID" search="onFilterSearchRID" /> -->
+                    <!-- <SearchField width="30%" search="onFilterSearch" /> -->
+
+                    <!-- <VBox> -->
+                    <!-- <Label
+                                    text="Name"
+                                    labelFor="Salary"
+                                /> -->
+                    <!-- <Input id="_IdName" width="10%" showSuggestion="true" showValueHelp="true" textFormatMode="KeyValue" valueHelpRequest="onLoadDialog" /> -->
+                    <!-- <MultiInput
+                                    width="10%"
+                                    placeholder="Enter Name"
+                                    showClearIcon="true"
+                                    id="_IdName"
+                                    suggestionItems="{
+				path: 'Table1>/employee1',
+				sorter: { path: 'Name' }
+			}"
+                                    showValueHelp="true"
+                                    valueHelpRequest="onLoadDialog"
+                                    valueHelpTrigger="handleValueHelpTrigger"
+                                >
+                                    <c:Item
+                                        key="{/employee1>Name}"
+                                        text="{Table1>Name}"
+                                    />
+                                </MultiInput> -->
+
+                    <!-- </VBox> -->
+                    <!-- </Toolbar>
+                    </headerToolbar> -->
+
+                    <columns>
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee ID" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee Name" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee Phone" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee Email" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee Department" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Basic Pay" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="HRA" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Special Allowance" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Shift Allowance" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Monthly Pay" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{Data1>EmpId}" />
+                                <Text text="{Data1>EmpName}" />
+                                <Text text="{Data1>EmpPhone}" />
+                                <Text text="{Data1>EmpEmail}" />
+                                <Text text="{Data1>EmpDep}" />
+                                <Text text="{Data1>BasicPay}" />
+                                <Text text="{Data1>Hra}" />
+                                <Text text="{Data1>SplAllowance}" />
+                                <Text text="{Data1>ShiftAllowance}" />
+                                <Text text="{Data1>MonthlyPay}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </f:content>
+        </f:DynamicPage>
+    </Page>
+</mvc:View>

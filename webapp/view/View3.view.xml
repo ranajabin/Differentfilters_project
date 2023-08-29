@@ -1,0 +1,435 @@
+<mvc:View
+    xmlns:c="sap.ui.core"
+    controllerName="empsmartfilter.empodatasmartfilterproject.controller.View3"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    height="100%"
+>
+    <Page
+        id="page"
+        title="Employee Records"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                tooltip="Next Page"
+                press="onnavNext"
+            />
+        </headerContent>
+        <f:DynamicPage
+            id="dynamicPageId"
+            preserveHeaderStateOnScroll="true"
+            headerExpanded="{/headerExpanded}"
+            showFooter="false"
+            fitContent="true"
+        >
+            <!-- DynamicPage Title -->
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Title text="Employee Data" />
+                    </f:heading>
+
+                    <f:actions>
+                        <ToolbarSpacer />
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+
+            <!-- DynamicPage Header -->
+
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                    <filterbar:FilterBar
+                        search="onPressGo"
+                        useToolbar="true"
+                        showGoOnFB="true"
+                    >
+                        <filterbar:filterGroupItems>
+                            <filterbar:FilterGroupItem
+                                groupName="G1"
+                                label="Employee ID "
+                                groupTitle="group1"
+                                name="Employee ID"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empid"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>EmpId}"
+                                            text="{Data1>EmpId}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                groupName="G2"
+                                label="Employee Name"
+                                groupTitle="group2"
+                                name="Employee Name"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empname"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>EmpName}"
+                                            text="{Data1>EmpName}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                groupName="G3"
+                                label="Employee Phone"
+                                groupTitle="group3"
+                                name="Employee Phone"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empPhone"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>EmpPhone}"
+                                            text="{Data1>EmpPhone}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                groupName="G4"
+                                label="Employee Email"
+                                groupTitle="group4"
+                                name="Employee Email"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empEmail"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>EmpEmail}"
+                                            text="{Data1>EmpEmail}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                groupName="G5"
+                                label="Employee Department"
+                                groupTitle="group5"
+                                name="Employee Department"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empDept"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>EmpDep}"
+                                            text="{Data1>EmpDep}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                groupName="G6"
+                                label="Basic Pay"
+                                groupTitle="group6"
+                                name="Basic Pay"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empBPay"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>BasicPay}"
+                                            text="{Data1>BasicPay}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                groupName="G7"
+                                label="Hra"
+                                groupTitle="group7"
+                                name="Hra"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empHra"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>Hra}"
+                                            text="{Data1>Hra}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                groupName="G8"
+                                label="Special Allowance"
+                                groupTitle="group8"
+                                name="Special Allowance"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empSpclA"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>SplAllowance}"
+                                            text="{Data1>SplAllowance}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                groupName="G9"
+                                label="Shift Allowance"
+                                groupTitle="group9"
+                                name="Shift Allowance"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empShftA"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>ShiftAllowance}"
+                                            text="{Data1>ShiftAllowance}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                groupName="G10"
+                                label="Monthly Pay"
+                                groupTitle="group10"
+                                name="Monthly Pay"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        selectionChange="handleSelectionChange"
+                                        selectionFinish="handleSelectionFinish"
+                                        width="200px"
+                                        id="_empMPay"
+                                        visible="true"
+                                        items="{Data1>/results}"
+                                    >
+                                        <c:Item
+                                            key="{/results>MonthlyPay}"
+                                            text="{Data1>MonthlyPay}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                        </filterbar:filterGroupItems>
+                    </filterbar:FilterBar>
+                </f:DynamicPageHeader>
+            </f:header>
+
+            <f:content>
+                <t:Table
+                    rows="{Data1>/results}"
+                    selectionMode="MultiToggle"
+                    visibleRowCountMode="Auto"
+                    id="Table1"
+                >
+                    <t:extension>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Employee Records" />
+                        </OverflowToolbar>
+                    </t:extension>
+                    <t:columns>
+                        <t:Column width="11rem">
+                            <Label text="Employee ID" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>EmpId}"
+                                    id="_idEmpId"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Employee Name" />
+                            <t:template>
+                                <Input
+                                    value="{Data1>EmpName}"
+                                    id="_idempname"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column
+                            width="6rem"
+                            hAlign="End"
+                        >
+                            <Label text="Employee Phone" />
+                            <t:template>
+                                <Label
+                                    text="{Data1>EmpPhone}"
+                                    id="_idempPhone"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Employee Email" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>EmpEmail}"
+                                    id="_idempEmail"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Employee Department" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>EmpDep}"
+                                    id="_idempDept"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Basic Pay" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>BasicPay}"
+                                    id="_idempBPay"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="HRA" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>Hra}"
+                                    id="_idempHra"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Special Allowance" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>SplAllowance}"
+                                    id="_idempSpclA"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Shift Allowance" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>ShiftAllowance}"
+                                    id="_idempShftA"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="Monthly Pay" />
+                            <t:template>
+                                <Text
+                                    text="{Data1>MonthlyPay}"
+                                    id="_idempMPay"
+                                    wrapping="false"
+                                />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </f:content>
+            <!-- DynamicPage Footer -->
+            <f:footer>
+                <OverflowToolbar>
+                    <!-- <Button icon="sap-icon://message-popup"
+							text="{/messagesLength}"
+							type="Emphasized"
+							press="onMessageButtonPress"
+							visible="{= !!${/messagesLength}}"/>
+					<ToolbarSpacer/>
+					<Button type="Accept" text="Accept"/>
+					<Button type="Reject" text="Reject"/>
+					<Button type = "Emphasized" text = "GotoNextView" press = "onnavNext" /> -->
+                </OverflowToolbar>
+            </f:footer>
+        </f:DynamicPage>
+    </Page>
+</mvc:View>

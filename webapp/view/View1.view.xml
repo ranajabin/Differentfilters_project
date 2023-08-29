@@ -1,0 +1,101 @@
+<mvc:View
+    controllerName="empsmartfilter.empodatasmartfilterproject.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:f="sap.f"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns:sv="sap.ui.comp.smartvariants"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m"
+>
+    <Button
+        id="toggleUpdateMode"
+        text="Change to 'LiveMode'"
+        press="toggleUpdateMode"
+    />
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                tooltip="Next Page"
+                press="onNavNext"
+            />
+        </headerContent>
+        <!-- <DynamicPage id="dynamicPage" fitContent="true">
+		<header>
+			<DynamicPageHeader>
+				<sfb:SmartFilterBar
+					id="smartFilterBar1"
+					entitySet="MainEntitySet"
+					enableBasicSearch="true"
+					basicSearchFieldName="CompanyCode"
+					persistencyKey="UniqueAndStablePersistencyKey"/>
+			</DynamicPageHeader>
+		</header> -->
+        <content>
+            <smartFilterBar:SmartFilterBar
+                id="smartFilterBar"
+                entitySet="zemp_detailsSet"
+                basicSearchFieldName="EmpId"
+                enableBasicSearch="true"
+            >
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration
+                        id="idEmp"
+                        visibleInAdvancedArea="true"
+                        label="Employee ID"
+                        key="EmpId"
+                    >
+                        <smartFilterBar:defaultFilterValues>
+                            <!-- <smartFilterBar:SelectOption low = "1" /> -->
+                        </smartFilterBar:defaultFilterValues>
+                    </smartFilterBar:ControlConfiguration>
+                    <smartFilterBar:ControlConfiguration
+                        id="idEmpName"
+                        visibleInAdvancedArea="true"
+                        label=" Employee Name "
+                        key="EmpName"
+                    />
+                    <smartFilterBar:ControlConfiguration
+                        id="idEmpMob"
+                        visibleInAdvancedArea="true"
+                        label="Employee Phone "
+                        key="EmpPhone"
+                    />
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+
+            <smartTable:SmartTable
+                id="idSmartTable"
+                smartFilterId="idSmartFilterBar"
+                entitySet="zemp_detailsSet"
+                tableType="ResponsiveTable"
+                initiallyVisibleFields="EmpId,EmpName,EmpPhone"
+                enableAutoBinding="true"
+                class="sapUiResponsiveContentPadding"
+                enableAutoColumnWidth="true"
+                editTogglable="true"
+                app:useSmartToggle="true"
+            >
+                <smartTable:layoutData>
+                    <FlexItemData
+                        growFactor="1"
+                        baseSize="0%"
+                    />
+                </smartTable:layoutData>
+                <Table
+                    id="idResponsiveTable"
+                    selectionChange="handleSelectionChange"
+                    mode="SingleSelectMaster"
+                />
+            </smartTable:SmartTable>
+        </content>
+    </Page>
+    <!-- </DynamicPage> -->
+</mvc:View>

@@ -1,0 +1,62 @@
+/* Enter your custom styles here */
+
+.sapMMessageToast {
+    background-color: rgb(5, 81, 87);
+    color: #e1f00d;
+    box-shadow: 0 0 0 0.0625rem rgba(0, 0, 0, 0.42), 0 0.625rem 1.875rem 0 rgba(0,0,0,0.3);
+    border-radius: 0.5rem;
+}
+
+.sapMTB {
+    background: #f38b03;
+    border-radius: 0.5rem;
+}
+
+.sapUiTableCell {    
+    border-right: 0.0625rem solid #0070f2;
+    border-bottom: 0.0625rem solid #e5e5e5;
+}
+
+.sapFDynamicPageTitle, .sapFDynamicPageTitleWrapper.sapFDynamicPageTitleSnapped>.sapFDynamicPageTitle {
+    padding-bottom: 1rem;
+    background: #a7a4a4;
+}
+
+.sapFDynamicPageHeader.sapFDynamicPageHeaderPinnable {
+    min-height: 2rem;
+    background: #08e3f3;
+}
+
+.sapMListHdr {
+    background: #448dfa;
+}
+
+.sapMList {
+    /* position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; */
+    background: #f8d04b;
+}
+
+.sapMLabel {
+    color: #f37806;
+    font-size: .875rem;
+    font-family: "72","72full",Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.sapUiSizeCompact  {
+    color: #f37806;
+    background: #f8d04b;
+}
+
+.sapMColumnHeader {
+    font-weight: bold;
+    font-family: "100","100full",Arial,Helvetica,sans-serif;
+}
+
+.sapUiSizeCompact.sapMDialog .sapMDialogTitleGroup .sapMHeader-CTX, .sapUiSizeCompact .sapMDialog .sapMDialogTitleGroup .sapMHeader-CTX, .sapUiSizeCompact.sapMDialog .sapMDialogTitleGroup .sapMSubHeader-CTX, .sapUiSizeCompact .sapMDialog .sapMDialogTitleGroup .sapMSubHeader-CTX {
+    background: #e0e0e0;
+}

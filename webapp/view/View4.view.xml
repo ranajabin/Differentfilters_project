@@ -1,0 +1,411 @@
+<mvc:View
+    xmlns:core="sap.ui.core"
+    controllerName="empsmartfilter.empodatasmartfilterproject.controller.View4"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    height="100%"
+>
+    <Page
+        id="page"
+        title="Employee Records"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                tooltip="Next Page"
+                press="onNavNext"
+            />
+        </headerContent>
+        <f:DynamicPage
+            id="dynamicPageId"
+            preserveHeaderStateOnScroll="true"
+            headerExpanded="{/headerExpanded}"
+            showFooter="false"
+            fitContent="true"
+        >
+            <!-- DynamicPage Title -->
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Title text="Employee Data" />
+                    </f:heading>
+
+                    <!-- <f:actions>
+                        <ToolbarSpacer />
+                    </f:actions> -->
+                </f:DynamicPageTitle>
+            </f:title>
+
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                    <VBox
+                        alignContent="End"
+                        alignItems="End"
+                    >
+                        <HBox>
+                            <!-- <Button text = "Go"  type = "Emphasized" visible = "false"  id = "_idbtn1" press = "onPressGo" /> -->
+                            <Button
+                                text="Show-Filters"
+                                type="Emphasized"
+                                press="onShowFilters"
+                            />
+                            <SearchField
+                                width="100%"
+                                search="onFilterSearch"
+                            />
+                        </HBox>
+                    </VBox>
+
+                    <l:HorizontalLayout class="sapUiContentPadding">
+                        <VBox>
+                            <Label
+                                text="Employee ID:"
+                                visible="false"
+                                id="_idEmpId"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empid"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>EmpId}"
+                                    text="{Data1>EmpId}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee Name:"
+                                visible="false"
+                                id="_idEmpNam"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empname"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>EmpName}"
+                                    text="{Data1>EmpName}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee Mob:"
+                                visible="false"
+                                id="_idEmpMob"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empPhone"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>EmpPhone}"
+                                    text="{Data1>EmpPhone}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee Email:"
+                                visible="false"
+                                id="_idEmpMail"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empEmail"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>EmpEmail}"
+                                    text="{Data1>EmpEmail}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee Dept:"
+                                visible="false"
+                                id="_idEmpDep"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empDept"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>EmpDep}"
+                                    text="{Data1>EmpDep}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Employee B Pay:"
+                                visible="false"
+                                id="_idBPay"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empBPay"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>BasicPay}"
+                                    text="{Data1>BasicPay}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="HRA:"
+                                visible="false"
+                                id="_idHra"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empHra"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>Hra}"
+                                    text="{Data1>Hra}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Special Allowance:"
+                                visible="false"
+                                id="_idSpclA"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empSpclA"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>SplAllowance}"
+                                    text="{Data1>SplAllowance}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Shift Allowance:"
+                                visible="false"
+                                id="_idShftA"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empShftA"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>ShiftAllowance}"
+                                    text="{Data1>ShiftAllowance}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Monthly Pay:"
+                                visible="false"
+                                id="_idMPay"
+                            />
+
+                            <MultiComboBox
+                                selectionChange="handleSelectionChange"
+                                selectionFinish="handleSelectionFinish"
+                                width="130px"
+                                id="_empMPay"
+                                visible="false"
+                                items="{Data1>/results}"
+                            >
+                                <core:Item
+                                    key="{/results>MonthlyPay}"
+                                    text="{Data1>MonthlyPay}"
+                                />
+                            </MultiComboBox>
+                        </VBox>
+                    </l:HorizontalLayout>
+                    <!-- </l:VerticalLayout>     -->
+                </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+                <Table
+                    backgroundDesign="Translucent"
+                    headerText="Employee Table:"
+                    alternateRowColors="true"
+                    id="Table1"
+                    items="{
+			path: 'Data1>/results',
+			sorter: {
+				path: 'Name'
+			}
+		}"
+                    width="100%"
+                    visible="true"
+                    inset="true"
+                    contextualWidth="inherit"
+                >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Employee Table:" />
+                            <ToolbarSpacer />
+                            <Button
+                                text="Go"
+                                type="Emphasized"
+                                visible="false"
+                                id="_idbtn1"
+                                press="onPressGo"
+                            />
+                        </Toolbar>
+                    </headerToolbar>
+
+                    <columns>
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee ID" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee Name" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee Phone" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee Email" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Employee Department" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Basic Pay" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="HRA" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Special Allowance" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Shift Allowance" />
+                        </Column>
+
+                        <Column
+                            width="09em"
+                            minScreenWidth="Tablet"
+                        >
+                            <Text text="Monthly Pay" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{Data1>EmpId}" />
+                                <Text text="{Data1>EmpName}" />
+                                <Text text="{Data1>EmpPhone}" />
+                                <Text text="{Data1>EmpEmail}" />
+                                <Text text="{Data1>EmpDep}" />
+                                <Text text="{Data1>BasicPay}" />
+                                <Text text="{Data1>Hra}" />
+                                <Text text="{Data1>SplAllowance}" />
+                                <Text text="{Data1>ShiftAllowance}" />
+                                <Text text="{Data1>MonthlyPay}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </f:content>
+        </f:DynamicPage>
+    </Page>
+</mvc:View>
